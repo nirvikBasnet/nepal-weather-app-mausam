@@ -20,12 +20,13 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.unit.dp
-import com.elitecodecamp.mausam.presentation.theme.DarkBlue
-import com.elitecodecamp.mausam.presentation.theme.DeepBlue
-import com.elitecodecamp.mausam.presentation.theme.MausamTheme
-import com.elitecodecamp.mausam.presentation.theme.WeatherCard
-import com.elitecodecamp.mausam.presentation.theme.WeatherForecast
-import com.elitecodecamp.mausam.presentation.theme.WeatherViewModel
+import com.elitecodecamp.mausam.presentation.ui.screens.today.WeatherCard
+import com.elitecodecamp.mausam.presentation.ui.screens.today.WeatherForecast
+import com.elitecodecamp.mausam.presentation.ui.screens.today.WeatherViewModel
+import com.elitecodecamp.mausam.presentation.ui.theme.DeepBlue
+import com.elitecodecamp.mausam.presentation.ui.theme.MausamTheme
+import com.elitecodecamp.mausam.presentation.ui.theme.NepalFlagBlue
+import com.elitecodecamp.mausam.presentation.ui.theme.NepalFlagRed
 import dagger.hilt.android.AndroidEntryPoint
 
 @AndroidEntryPoint
@@ -52,11 +53,11 @@ class MainActivity : ComponentActivity() {
                     Column(
                         modifier = Modifier
                             .fillMaxSize()
-                            .background(DarkBlue)
+                            .background(NepalFlagBlue)
                     ) {
                         WeatherCard(
                             state = viewModel.state,
-                            backgroundColor = DeepBlue
+                            backgroundColor = NepalFlagRed
                         )
                         Spacer(modifier = Modifier.height(16.dp))
                         WeatherForecast(state = viewModel.state)

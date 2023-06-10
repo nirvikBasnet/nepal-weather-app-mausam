@@ -1,4 +1,4 @@
-package com.elitecodecamp.mausam.presentation.theme
+package com.elitecodecamp.mausam.presentation.ui.screens.today
 
 import com.elitecodecamp.mausam.domain.weather.WeatherInfo
 

@@ -2,6 +2,8 @@ package com.elitecodecamp.mausam.di
 
 import android.app.Application
 import com.elitecodecamp.mausam.data.remote.WeatherApi
+import com.elitecodecamp.mausam.data.repository.PredictionRepositoryImpl
+import com.elitecodecamp.mausam.domain.repository.PredictionRepository
 import com.elitecodecamp.mausam.domain.util.LoggingInterceptor
 import com.google.android.gms.location.FusedLocationProviderClient
 import com.google.android.gms.location.LocationServices
@@ -35,6 +37,11 @@ object AppModule {
             .addConverterFactory(MoshiConverterFactory.create())
             .build()
             .create()
+    }
+
+    @Provides
+    fun providePredictionRepository(apiServices: WeatherApi):PredictionRepository{
+        return PredictionRepositoryImpl(apiServices)
     }
 
     @Provides

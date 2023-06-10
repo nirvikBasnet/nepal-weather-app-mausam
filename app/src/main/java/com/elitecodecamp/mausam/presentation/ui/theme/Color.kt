@@ -1,4 +1,4 @@
-package com.elitecodecamp.mausam.presentation.theme
+package com.elitecodecamp.mausam.presentation.ui.theme
 
 import androidx.compose.ui.graphics.Color
 
@@ -12,3 +12,6 @@ val Pink40 = Color(0xFF7D5260)
 
 val DarkBlue = Color(0xFF1B3B5A)
 val DeepBlue = Color(0xFF102840)
+
+var NepalFlagBlue = Color(0xFF003893)
+var NepalFlagRed = Color(0xFFDC143C)

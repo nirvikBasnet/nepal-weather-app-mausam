@@ -1,5 +1,7 @@
 package com.elitecodecamp.mausam.data.remote
 
+import com.elitecodecamp.mausam.data.remote.prediction.PredictionDataDto
+import com.elitecodecamp.mausam.data.remote.prediction.PredictionDto
 import retrofit2.http.GET
 import retrofit2.http.Query
 
@@ -9,4 +11,10 @@ interface WeatherApi {
         @Query("latitude") lat: Double,
         @Query ("longitude") long : Double
     ) : WeatherDto
+
+    @GET("v1/forecast?timezone=Asia/Kathmandu&longitude=-60.22&daily=temperature_2m_max")
+    suspend fun getWeeklyPredictionData(
+        @Query("latitude") lat: Double,
+        @Query ("longitude") long : Double
+    ) : PredictionDto
 }

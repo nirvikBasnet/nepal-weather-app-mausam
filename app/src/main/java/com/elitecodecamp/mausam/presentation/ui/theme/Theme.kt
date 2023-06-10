@@ -1,4 +1,4 @@
-package com.elitecodecamp.mausam.presentation.theme
+package com.elitecodecamp.mausam.presentation.ui.theme
 
 import android.app.Activity
 import android.os.Build
