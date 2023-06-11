@@ -13,6 +13,7 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
+import com.elitecodecamp.mausam.presentation.ui.theme.NepalFlagBlue
 
 @Composable
 fun WeatherForecast(
@@ -28,7 +29,7 @@ fun WeatherForecast(
             Text(
                 text = "Today",
                 fontSize = 20.sp,
-                color = Color.White
+                color = NepalFlagBlue
             )
             Spacer(modifier = Modifier.height(16.dp))
             LazyRow(content = {

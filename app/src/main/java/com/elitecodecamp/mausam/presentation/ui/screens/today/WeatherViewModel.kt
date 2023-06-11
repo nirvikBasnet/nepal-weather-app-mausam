@@ -1,14 +1,25 @@
 package com.elitecodecamp.mausam.presentation.ui.screens.today
 
+import android.Manifest
+import android.content.pm.PackageManager
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.setValue
+import androidx.core.app.ActivityCompat
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
+import androidx.lifecycle.viewmodel.compose.viewModel
 import com.elitecodecamp.mausam.domain.location.LocationTracker
 import com.elitecodecamp.mausam.domain.repository.WeatherRepository
 import com.elitecodecamp.mausam.domain.util.Resource
+import com.google.android.gms.location.LocationCallback
+import com.google.android.gms.location.LocationRequest
+import com.google.android.gms.location.LocationResult
+import com.google.android.gms.location.LocationServices
+import com.google.android.gms.location.Priority
+import dagger.hilt.android.internal.Contexts.getApplication
 import dagger.hilt.android.lifecycle.HiltViewModel
+import kotlinx.coroutines.currentCoroutineContext
 import kotlinx.coroutines.launch
 import javax.inject.Inject
 
@@ -20,6 +31,8 @@ class WeatherViewModel @Inject constructor(
 
     var state by mutableStateOf(WeatherState())
         private set
+
+
 
     fun loadWeatherInfo() {
         viewModelScope.launch {
@@ -48,9 +61,11 @@ class WeatherViewModel @Inject constructor(
                 ?: kotlin.run {
                     state = state.copy(
                         isLoading = false,
-                        error = "Couldn't retrieve location. Make sure to grant permission and enable GPS."
+                        error = "Couldn't retrieve location. \nPlease click the below button to refresh.\n Make sure to grant permission and enable GPS."
                     )
                 }
         }
     }
+
+
 }

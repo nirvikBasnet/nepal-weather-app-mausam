@@ -18,9 +18,12 @@ import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.vector.ImageVector
 import androidx.compose.ui.res.vectorResource
+import androidx.compose.ui.text.TextStyle
+import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import com.elitecodecamp.mausam.R
+import com.elitecodecamp.mausam.presentation.ui.theme.NepalFlagBlue
 
 @Composable
 fun PredictionList(viewModel: PredictionViewModel) {
@@ -41,7 +44,7 @@ fun PredictionList(viewModel: PredictionViewModel) {
             }
         } else {
             // Loading state or error state
-            Text("Loading data...")
+
         }
     }
 
@@ -56,13 +59,8 @@ fun weatherItem(
     Row (modifier = Modifier.padding(10.dp).fillMaxWidth(),
     horizontalArrangement = Arrangement.SpaceBetween,
     verticalAlignment = Alignment.CenterVertically){
-        Text(text = date)
-        Text(text = temperature.toString())
-        Icon(
-            imageVector = ImageVector.vectorResource(R.drawable.ic_cloudy),
-            contentDescription = "cloudy",
-            modifier = Modifier.size(32.dp)
-        )
+        Text(text = date, color = NepalFlagBlue)
+        Text(text = "${temperature.toString()}°C", color = NepalFlagBlue, fontWeight = FontWeight.Bold)
     }
 }
 

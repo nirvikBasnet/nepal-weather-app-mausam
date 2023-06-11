@@ -14,13 +14,14 @@ import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.dp
 import com.elitecodecamp.mausam.domain.weather.WeatherData
+import com.elitecodecamp.mausam.presentation.ui.theme.NepalFlagBlue
 import java.time.format.DateTimeFormatter
 
 @Composable
 fun HourlyWeatherDisplay(
     weatherData: WeatherData,
     modifier: Modifier = Modifier,
-    textColor: Color = Color.White
+    textColor: Color = NepalFlagBlue
 ) {
     val formattedTime = remember(weatherData) {
         weatherData.time.format(
@@ -34,7 +35,7 @@ fun HourlyWeatherDisplay(
     ) {
         Text(
             text = formattedTime,
-            color = Color.LightGray
+            color = NepalFlagBlue
         )
         Image(
             painter = painterResource(id = weatherData.weatherType.iconRes),
