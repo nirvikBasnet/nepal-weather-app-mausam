@@ -1,4 +1,8 @@
 <resources>
     <string name="app_name">Mausam</string>
     <string name="drawer_menu_description">Menu navigation button</string>
+    <string name="drawer_home">Todays</string>
+    <string name="drawer_home_description">Todays Screen</string>
+    <string name="drawer_prediction">prediction</string>
+    <string name="drawer_prediction_description">Prediction Screen</string>
 </resources>

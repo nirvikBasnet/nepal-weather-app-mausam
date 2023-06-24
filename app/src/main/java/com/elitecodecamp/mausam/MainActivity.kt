@@ -19,13 +19,20 @@ import androidx.compose.material3.Button
 import androidx.compose.material3.CircularProgressIndicator
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.remember
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.unit.dp
-import androidx.core.app.ActivityCompat
-import androidx.core.content.ContextCompat
+import androidx.navigation.NavController
+import androidx.navigation.NavHostController
+import androidx.navigation.compose.NavHost
+import androidx.navigation.compose.composable
+import androidx.navigation.compose.rememberNavController
+import com.elitecodecamp.mausam.presentation.ui.MainCompose
+import com.elitecodecamp.mausam.presentation.ui.screens.main.PredictionScreen
+import com.elitecodecamp.mausam.presentation.ui.screens.main.TodayScreen
 import com.elitecodecamp.mausam.presentation.ui.screens.prediction.PredictionList
 import com.elitecodecamp.mausam.presentation.ui.screens.prediction.PredictionViewModel
 import com.elitecodecamp.mausam.presentation.ui.screens.today.WeatherCard
@@ -33,16 +40,11 @@ import com.elitecodecamp.mausam.presentation.ui.screens.today.WeatherForecast
 import com.elitecodecamp.mausam.presentation.ui.screens.today.WeatherViewModel
 import com.elitecodecamp.mausam.presentation.ui.theme.MausamTheme
 import com.elitecodecamp.mausam.presentation.ui.theme.NepalFlagRed
-import com.google.android.gms.location.LocationCallback
-import com.google.android.gms.location.LocationRequest
-import com.google.android.gms.location.LocationResult
-import com.google.android.gms.location.LocationServices
-import com.google.android.gms.location.Priority
 import dagger.hilt.android.AndroidEntryPoint
 
 @AndroidEntryPoint
 class MainActivity : ComponentActivity() {
-    private val viewModel: WeatherViewModel by viewModels()
+    private val weatherViewModel: WeatherViewModel by viewModels()
     private val predictionViewModel: PredictionViewModel by viewModels()
     private lateinit var permissionLauncher: ActivityResultLauncher<Array<String>>
 
@@ -53,7 +55,7 @@ class MainActivity : ComponentActivity() {
         permissionLauncher = registerForActivityResult(
             ActivityResultContracts.RequestMultiplePermissions()
         ) {
-            viewModel.loadWeatherInfo()
+            weatherViewModel.loadWeatherInfo()
             predictionViewModel.fetchWeatherData()
         }
         permissionLauncher.launch(arrayOf(
@@ -64,49 +66,7 @@ class MainActivity : ComponentActivity() {
 
         setContent {
             MausamTheme {
-
-                Box(
-                    modifier = Modifier.fillMaxSize(),
-                ) {
-                    Column(
-                        modifier = Modifier
-                            .fillMaxSize()
-                            .background(Color.White)
-                    ) {
-                        WeatherCard(
-                            state = viewModel.state,
-                            backgroundColor = NepalFlagRed
-                        )
-                        Spacer(modifier = Modifier.height(16.dp))
-                        WeatherForecast(state = viewModel.state)
-                        Spacer(modifier = Modifier.height(16.dp))
-                        PredictionList(predictionViewModel)
-                    }
-                    if(viewModel.state.isLoading) {
-                        CircularProgressIndicator(
-                            modifier = Modifier.align(Alignment.Center)
-                        )
-                    }
-                    viewModel.state.error?.let { error ->
-                        Column( modifier = Modifier
-                            .fillMaxWidth()
-                            .padding(horizontal = 16.dp).align(Alignment.Center)) {
-                            Text(
-                                text = error,
-                                color = Color.Red,
-                                textAlign = TextAlign.Center,
-                            )
-                            Spacer(modifier = Modifier.height(16.dp))
-                            ComposeButton(onClick = {
-
-                                viewModel.loadWeatherInfo()
-                                predictionViewModel.fetchWeatherData()
-
-                            })
-                        }
-
-                    }
-                }
+              MainCompose(predictionViewModel,weatherViewModel)
             }
         }
 
@@ -125,4 +85,7 @@ fun ComposeButton(onClick: () -> Unit) {
         Text(text = "Refresh")
     }
 }
+
+
+
 

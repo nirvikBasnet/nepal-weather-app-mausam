@@ -7,6 +7,9 @@ import androidx.activity.compose.setContent
 import androidx.activity.result.ActivityResultLauncher
 import androidx.activity.result.contract.ActivityResultContracts
 import androidx.activity.viewModels
+import androidx.compose.foundation.layout.Column
+import androidx.compose.foundation.layout.Row
+import androidx.compose.material.Text
 import com.elitecodecamp.mausam.presentation.ui.theme.MausamTheme
 
 class Prediction : ComponentActivity() {
@@ -28,6 +31,7 @@ class Prediction : ComponentActivity() {
 
         setContent {
             MausamTheme {
+
                 PredictionList(predictionViewModel)
             }
         }
