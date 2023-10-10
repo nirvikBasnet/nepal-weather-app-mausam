@@ -54,7 +54,7 @@ class DefaultLocationTracker @Inject constructor(
         val locationCallback = object : LocationCallback(){
             override fun onLocationResult(locationResult: LocationResult) {
 
-                locationResult?.let { result->
+                locationResult.let { result->
 
                 }
 

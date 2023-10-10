@@ -12,11 +12,12 @@ import javax.inject.Inject
 class PredictionRepositoryImpl @Inject constructor(
     private val api: WeatherApi
 ): PredictionRepository {
-    override suspend fun getPredictionData(lat: Double, long: Double): PredictionDto {
+    override suspend fun getPredictionData(lat: Double, long: Double,city: String): PredictionDto {
 
        return api.getWeeklyPredictionData(
             lat = lat,
-            long = long
+            long = long,
+           timezone = "Asia/$city"
         )
     }
 }

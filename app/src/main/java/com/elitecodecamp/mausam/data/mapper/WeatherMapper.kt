@@ -2,6 +2,9 @@ package com.elitecodecamp.mausam.data.mapper
 
 import com.elitecodecamp.mausam.data.remote.WeatherDataDto
 import com.elitecodecamp.mausam.data.remote.WeatherDto
+import com.elitecodecamp.mausam.data.remote.prediction.PredictionDataDto
+import com.elitecodecamp.mausam.data.remote.prediction.PredictionDto
+import com.elitecodecamp.mausam.domain.weather.PredictionInfo
 import com.elitecodecamp.mausam.domain.weather.WeatherData
 import com.elitecodecamp.mausam.domain.weather.WeatherInfo
 import com.elitecodecamp.mausam.domain.weather.WeatherType

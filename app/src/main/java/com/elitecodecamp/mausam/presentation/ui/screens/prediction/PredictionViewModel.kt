@@ -1,5 +1,6 @@
 package com.elitecodecamp.mausam.presentation.ui.screens.prediction
 
+import android.util.Log
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.elitecodecamp.mausam.data.remote.prediction.PredictionDto
@@ -24,9 +25,10 @@ class PredictionViewModel @Inject constructor(
         viewModelScope.launch {
             locationTracker.getCurrentLocation()?.let { location ->
                try {
-                   val response = repository.getPredictionData(location.latitude,location.longitude)
+                   val response = repository.getPredictionData(location.latitude,location.longitude,"Kathmandu")
                    _predictionData.value=response
                }catch (e:Exception){
+
 
                }
             }

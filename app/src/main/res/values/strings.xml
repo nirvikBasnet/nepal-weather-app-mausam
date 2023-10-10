@@ -5,4 +5,6 @@
     <string name="drawer_home_description">Todays Screen</string>
     <string name="drawer_prediction">prediction</string>
     <string name="drawer_prediction_description">Prediction Screen</string>
+    <string name="todays_weather">Today\'s Weather</string>
+    <string name="weekly_prediction">Weekly Prediction</string>
 </resources>

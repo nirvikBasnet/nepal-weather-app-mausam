@@ -19,6 +19,7 @@ import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.unit.dp
 import com.elitecodecamp.mausam.ComposeButton
+import com.elitecodecamp.mausam.R
 import com.elitecodecamp.mausam.presentation.ui.screens.today.WeatherCard
 import com.elitecodecamp.mausam.presentation.ui.screens.today.WeatherForecast
 import com.elitecodecamp.mausam.presentation.ui.screens.today.WeatherViewModel
@@ -32,7 +33,7 @@ fun TodayScreen(
 )
 {
 
-    Scaffold(topBar = { AppBar(drawerState = drawerState) }) {
+        Scaffold(topBar = { AppBar(drawerState = drawerState, title = R.string.todays_weather) }) {
         Box(
             modifier = Modifier.fillMaxSize().padding(it),
         ) {

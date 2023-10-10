@@ -8,6 +8,9 @@ import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.foundation.lazy.itemsIndexed
+import androidx.compose.material3.Card
+import androidx.compose.material3.CardDefaults
+import androidx.compose.material3.CircularProgressIndicator
 import androidx.compose.material3.Icon
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
@@ -35,19 +38,8 @@ fun PredictionList(viewModel: PredictionViewModel) {
         viewModel.fetchWeatherData()
     }
 
-    Column {
+    Row {
         if (predictionData != null) {
-            Column {
-                Row {
-                    Text(
-                        modifier = Modifier.padding(5.dp),
-                        text = "Weekly Prediction",
-                        fontSize = 15.sp,
-                        color = NepalFlagBlue,
-                        fontWeight = FontWeight.Bold
-                        )
-                }
-            }
             LazyColumn {
                 itemsIndexed(predictionData!!.predictionData.date) { index, time ->
                     val temperature = predictionData!!.predictionData.temperature[index]
@@ -56,7 +48,11 @@ fun PredictionList(viewModel: PredictionViewModel) {
                 }
             }
         } else {
-            // Loading state or error state
+//            if(viewModel.state.isLoading) {
+//                CircularProgressIndicator(
+//                    modifier = Modifier.align(Alignment.CenterVertically)
+//                )
+//            }
 
         }
     }
@@ -69,12 +65,18 @@ fun weatherItem(
     date : String,
     temperature : Double,
     ){
-    Row (modifier = Modifier.padding(10.dp).fillMaxWidth(),
-    horizontalArrangement = Arrangement.SpaceBetween,
-    verticalAlignment = Alignment.CenterVertically){
-        Text(text = date, color = NepalFlagBlue)
-        Text(text = "${temperature.toString()}°C", color = NepalFlagBlue, fontWeight = FontWeight.Bold)
-    }
+
+        Card (modifier = Modifier.padding(5.dp).fillMaxWidth(),
+            elevation = CardDefaults.cardElevation(2.dp)) {
+            Row (modifier = Modifier.padding(10.dp).fillMaxWidth(),
+                horizontalArrangement = Arrangement.SpaceBetween,
+                verticalAlignment = Alignment.CenterVertically) {
+                Text(text = date, color = NepalFlagBlue)
+                Text(text = "${temperature}°C", color = NepalFlagBlue, fontWeight = FontWeight.Bold)
+            }
+        }
+
+
 }
 
 

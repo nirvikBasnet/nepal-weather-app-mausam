@@ -5,5 +5,5 @@ import com.elitecodecamp.mausam.data.remote.prediction.PredictionDto
 import com.elitecodecamp.mausam.domain.util.Resource
 
 interface PredictionRepository {
-    suspend fun getPredictionData(lat:Double,long:Double): PredictionDto
+    suspend fun getPredictionData(lat:Double,long:Double,city:String): PredictionDto
 }

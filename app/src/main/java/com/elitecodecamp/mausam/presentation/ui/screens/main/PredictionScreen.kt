@@ -11,6 +11,7 @@ import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.navigation.NavController
+import com.elitecodecamp.mausam.R
 import com.elitecodecamp.mausam.presentation.ui.screens.prediction.PredictionList
 import com.elitecodecamp.mausam.presentation.ui.screens.prediction.PredictionViewModel
 import com.elitecodecamp.navigationdrawer.drawer.AppBar
@@ -21,10 +22,10 @@ fun PredictionScreen(
     drawerState: DrawerState
     ){
     Scaffold(
-        topBar = { AppBar(drawerState = drawerState) }
+        topBar = { AppBar(drawerState = drawerState, title = R.string.weekly_prediction) }
     ) {
         Column(
-            modifier = Modifier.fillMaxSize().padding(it),
+            modifier = Modifier.padding(it),
             verticalArrangement = Arrangement.Center,
             horizontalAlignment = Alignment.CenterHorizontally
         ) {

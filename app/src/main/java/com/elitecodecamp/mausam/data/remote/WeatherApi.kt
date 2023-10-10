@@ -12,9 +12,10 @@ interface WeatherApi {
         @Query ("longitude") long : Double
     ) : WeatherDto
 
-    @GET("v1/forecast?timezone=Asia/Kathmandu&longitude=-60.22&daily=temperature_2m_max")
+    @GET("v1/forecast?daily=temperature_2m_max")
     suspend fun getWeeklyPredictionData(
         @Query("latitude") lat: Double,
-        @Query ("longitude") long : Double
+        @Query ("longitude") long : Double,
+    @Query("timezone") timezone : String
     ) : PredictionDto
 }
