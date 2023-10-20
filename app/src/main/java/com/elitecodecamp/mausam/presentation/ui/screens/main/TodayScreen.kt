@@ -40,7 +40,6 @@ fun TodayScreen(
             Column(
                 modifier = Modifier
                     .fillMaxSize()
-                    .background(Color.White)
             ) {
                 WeatherCard(
                     state = weatherViewModel.state,

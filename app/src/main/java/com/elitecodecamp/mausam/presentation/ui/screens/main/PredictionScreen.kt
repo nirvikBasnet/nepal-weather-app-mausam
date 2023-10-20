@@ -22,7 +22,7 @@ fun PredictionScreen(
     drawerState: DrawerState
     ){
     Scaffold(
-        topBar = { AppBar(drawerState = drawerState, title = R.string.weekly_prediction) }
+        topBar = { AppBar(drawerState = drawerState, title = R.string.weekly_prediction)}
     ) {
         Column(
             modifier = Modifier.padding(it),

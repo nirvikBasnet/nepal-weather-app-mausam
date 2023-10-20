@@ -71,8 +71,8 @@ fun weatherItem(
             Row (modifier = Modifier.padding(10.dp).fillMaxWidth(),
                 horizontalArrangement = Arrangement.SpaceBetween,
                 verticalAlignment = Alignment.CenterVertically) {
-                Text(text = date, color = NepalFlagBlue)
-                Text(text = "${temperature}°C", color = NepalFlagBlue, fontWeight = FontWeight.Bold)
+                Text(text = date)
+                Text(text = "${temperature}°C", fontWeight = FontWeight.Bold)
             }
         }
 

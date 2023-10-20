@@ -7,6 +7,7 @@ import androidx.compose.material3.ModalNavigationDrawer
 import androidx.compose.material3.Surface
 import androidx.compose.material3.rememberDrawerState
 import androidx.compose.runtime.Composable
+import androidx.lifecycle.LifecycleCoroutineScope
 import androidx.navigation.NavHostController
 import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.rememberNavController
@@ -26,7 +27,8 @@ fun MainCompose(
     predictionViewModel: PredictionViewModel,
     weatherViewModel: WeatherViewModel,
     navController: NavHostController = rememberNavController(),
-    drawerState: DrawerState = rememberDrawerState(initialValue = DrawerValue.Closed)
+    drawerState: DrawerState = rememberDrawerState(initialValue = DrawerValue.Closed),
+    lifecycleCoroutineScope: LifecycleCoroutineScope
 ) {
 
     MausamTheme {
@@ -47,6 +49,11 @@ fun MainCompose(
                                 }
                             }
                             MainNavOption.PredictionScreen -> {
+                                navController.navigate(onUserPickedOption.name) {
+                                    popUpTo(NavRoutes.MainRoute.name)
+                                }
+                            }
+                            MainNavOption.SignInScreen -> {
                                 navController.navigate(onUserPickedOption.name) {
                                     popUpTo(NavRoutes.MainRoute.name)
                                 }

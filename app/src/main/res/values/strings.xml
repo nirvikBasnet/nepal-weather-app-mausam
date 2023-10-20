@@ -7,4 +7,5 @@
     <string name="drawer_prediction_description">Prediction Screen</string>
     <string name="todays_weather">Today\'s Weather</string>
     <string name="weekly_prediction">Weekly Prediction</string>
+    <string name="web_client_id">638720373988-ngmm1ocbba8ngmn040qjfot2jm54ccbp.apps.googleusercontent.com</string>
 </resources>
