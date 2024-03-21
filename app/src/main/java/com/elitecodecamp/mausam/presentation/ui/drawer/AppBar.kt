@@ -1,6 +1,7 @@
 package com.elitecodecamp.navigationdrawer.drawer
 
 import androidx.annotation.StringRes
+import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.size
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.rounded.Menu

@@ -34,6 +34,7 @@ fun <T : Enum<T>> DrawerContent(
     ModalDrawerSheet {
         Surface(color = MaterialTheme.colorScheme.background) {
             Column(
+                modifier = Modifier.padding(top = 10.dp),
                 horizontalAlignment = Alignment.CenterHorizontally
             ) {
                 LazyColumn(

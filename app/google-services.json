@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "916354556587",
+    "project_id": "mausam-5f05e",
+    "storage_bucket": "mausam-5f05e.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:916354556587:android:cf0aaa40586390c420cdee",
+        "android_client_info": {
+          "package_name": "com.elitecodecamp.mausam"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBih8AnWG_P0LeMe74FY0g5knaYS79hpf0"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

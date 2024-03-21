@@ -31,7 +31,7 @@ fun WeatherDataDto.toWeatherDataMap(): Map<Int, List<WeatherData>> {
                 pressure = pressure,
                 windSpeed = windSpeed,
                 humidity = humidity,
-                weatherType = WeatherType.fromWMO(weatherCode)
+                weatherType = WeatherType.fromWMO(weatherCode,LocalDateTime.parse(time, DateTimeFormatter.ISO_DATE_TIME))
             )
         )
     }.groupBy {

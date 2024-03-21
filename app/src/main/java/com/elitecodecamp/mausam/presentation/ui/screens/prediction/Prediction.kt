@@ -10,6 +10,7 @@ import androidx.activity.viewModels
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Row
 import androidx.compose.material.Text
+import com.elitecodecamp.mausam.admob.AdmobBanner
 import com.elitecodecamp.mausam.presentation.ui.theme.MausamTheme
 
 class Prediction : ComponentActivity() {
@@ -33,6 +34,7 @@ class Prediction : ComponentActivity() {
             MausamTheme {
 
                 PredictionList(predictionViewModel)
+                AdmobBanner()
             }
         }
     }

@@ -35,7 +35,6 @@ fun HourlyWeatherDisplay(
     ) {
         Text(
             text = formattedTime,
-            color = NepalFlagBlue
         )
         Image(
             painter = painterResource(id = weatherData.weatherType.iconRes),
@@ -44,7 +43,6 @@ fun HourlyWeatherDisplay(
         )
         Text(
             text = "${weatherData.temperatureCelsius}°C",
-            color = textColor,
             fontWeight = FontWeight.Bold
         )
     }

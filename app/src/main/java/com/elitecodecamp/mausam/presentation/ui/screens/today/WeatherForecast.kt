@@ -29,7 +29,6 @@ fun WeatherForecast(
             Text(
                 text = "Today",
                 fontSize = 20.sp,
-                color = NepalFlagBlue
             )
             Spacer(modifier = Modifier.height(16.dp))
             LazyRow(content = {

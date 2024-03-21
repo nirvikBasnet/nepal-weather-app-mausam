@@ -1,5 +1,6 @@
 package com.elitecodecamp.mausam.presentation.ui.screens.main
 
+import android.content.Context
 import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
@@ -18,13 +19,19 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.unit.dp
+import androidx.compose.ui.viewinterop.AndroidView
 import com.elitecodecamp.mausam.ComposeButton
 import com.elitecodecamp.mausam.R
+import com.elitecodecamp.mausam.admob.AdmobBanner
 import com.elitecodecamp.mausam.presentation.ui.screens.today.WeatherCard
 import com.elitecodecamp.mausam.presentation.ui.screens.today.WeatherForecast
 import com.elitecodecamp.mausam.presentation.ui.screens.today.WeatherViewModel
 import com.elitecodecamp.mausam.presentation.ui.theme.NepalFlagRed
 import com.elitecodecamp.navigationdrawer.drawer.AppBar
+import com.google.android.gms.ads.AdRequest
+import com.google.android.gms.ads.AdSize
+import com.google.android.gms.ads.AdView
+import com.google.android.gms.ads.MobileAds
 
 @Composable
 fun TodayScreen(
@@ -40,15 +47,17 @@ fun TodayScreen(
             Column(
                 modifier = Modifier
                     .fillMaxSize()
-                    .background(Color.White)
+
             ) {
+
                 WeatherCard(
                     state = weatherViewModel.state,
                     backgroundColor = NepalFlagRed
                 )
                 Spacer(modifier = Modifier.height(16.dp))
                 WeatherForecast(state = weatherViewModel.state)
-                Spacer(modifier = Modifier.height(16.dp))
+                Spacer(modifier = Modifier.height(30.dp))
+                AdmobBanner()
 
             }
             if(weatherViewModel.state.isLoading) {
@@ -73,11 +82,16 @@ fun TodayScreen(
                     })
                 }
 
-
             }
+
+
+
+
 
         }
 
     }
 
 }
+
+

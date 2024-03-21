@@ -1,7 +1,12 @@
 package com.elitecodecamp.mausam.domain.weather
 
 import androidx.annotation.DrawableRes
+import androidx.compose.material.icons.Icons
 import com.elitecodecamp.mausam.R
+import com.elitecodecamp.mausam.presentation.ui.screens.today.weatherDataPreview
+import java.time.LocalDateTime
+import java.time.LocalTime
+import java.time.format.DateTimeFormatter
 
 sealed class WeatherType(
     val weatherDesc: String,
@@ -11,8 +16,10 @@ sealed class WeatherType(
         weatherDesc = "Clear sky",
         iconRes = R.drawable.ic_sunny
     )
+
     object MainlyClear : WeatherType(
         weatherDesc = "Mainly clear",
+
         iconRes = R.drawable.ic_cloudy
     )
     object PartlyCloudy : WeatherType(
@@ -116,39 +123,100 @@ sealed class WeatherType(
         iconRes = R.drawable.ic_rainythunder
     )
 
+    //Night Section
+
     companion object {
-        fun fromWMO(code: Int): WeatherType {
-            return when(code) {
-                0 -> ClearSky
-                1 -> MainlyClear
-                2 -> PartlyCloudy
-                3 -> Overcast
-                45 -> Foggy
-                48 -> DepositingRimeFog
-                51 -> LightDrizzle
-                53 -> ModerateDrizzle
-                55 -> DenseDrizzle
-                56 -> LightFreezingDrizzle
-                57 -> DenseFreezingDrizzle
-                61 -> SlightRain
-                63 -> ModerateRain
-                65 -> HeavyRain
-                66 -> LightFreezingDrizzle
-                67 -> HeavyFreezingRain
-                71 -> SlightSnowFall
-                73 -> ModerateSnowFall
-                75 -> HeavySnowFall
-                77 -> SnowGrains
-                80 -> SlightRainShowers
-                81 -> ModerateRainShowers
-                82 -> ViolentRainShowers
-                85 -> SlightSnowShowers
-                86 -> HeavySnowShowers
-                95 -> ModerateThunderstorm
-                96 -> SlightHailThunderstorm
-                99 -> HeavyHailThunderstorm
-                else -> ClearSky
+        fun fromWMO(code: Int, time: LocalDateTime): WeatherType {
+            if(isNight(time)){
+                return when(code) {
+                    0 -> ClearSkyNight
+                    1 -> MainlyClear
+                    2 -> PartlyCloudy
+                    3 -> Overcast
+                    45 -> Foggy
+                    48 -> DepositingRimeFog
+                    51 -> LightDrizzle
+                    53 -> ModerateDrizzle
+                    55 -> DenseDrizzle
+                    56 -> LightFreezingDrizzle
+                    57 -> DenseFreezingDrizzle
+                    61 -> SlightRain
+                    63 -> ModerateRain
+                    65 -> HeavyRain
+                    66 -> LightFreezingDrizzle
+                    67 -> HeavyFreezingRain
+                    71 -> SlightSnowFall
+                    73 -> ModerateSnowFall
+                    75 -> HeavySnowFall
+                    77 -> SnowGrains
+                    80 -> SlightRainShowers
+                    81 -> ModerateRainShowers
+                    82 -> ViolentRainShowers
+                    85 -> SlightSnowShowers
+                    86 -> HeavySnowShowers
+                    95 -> ModerateThunderstorm
+                    96 -> SlightHailThunderstorm
+                    99 -> HeavyHailThunderstorm
+                    else -> ClearSky
+                }
+            }else{
+                return when(code) {
+                    0 -> ClearSky
+                    1 -> MainlyClear
+                    2 -> PartlyCloudy
+                    3 -> Overcast
+                    45 -> Foggy
+                    48 -> DepositingRimeFog
+                    51 -> LightDrizzle
+                    53 -> ModerateDrizzle
+                    55 -> DenseDrizzle
+                    56 -> LightFreezingDrizzle
+                    57 -> DenseFreezingDrizzle
+                    61 -> SlightRain
+                    63 -> ModerateRain
+                    65 -> HeavyRain
+                    66 -> LightFreezingDrizzle
+                    67 -> HeavyFreezingRain
+                    71 -> SlightSnowFall
+                    73 -> ModerateSnowFall
+                    75 -> HeavySnowFall
+                    77 -> SnowGrains
+                    80 -> SlightRainShowers
+                    81 -> ModerateRainShowers
+                    82 -> ViolentRainShowers
+                    85 -> SlightSnowShowers
+                    86 -> HeavySnowShowers
+                    95 -> ModerateThunderstorm
+                    96 -> SlightHailThunderstorm
+                    99 -> HeavyHailThunderstorm
+                    else -> ClearSky
+                }
             }
+
+        }
+
+        private fun isNight(time: LocalDateTime):Boolean{
+
+                val currentTime = LocalTime.parse(
+                    time.format(
+                        DateTimeFormatter.ofPattern("HH:mm")
+                    ), DateTimeFormatter.ofPattern("HH:mm")
+                )
+
+                // Define the threshold for night time
+                val nightStartTime = LocalTime.of(18, 0) // 6 PM
+                val nightEndTime = LocalTime.of(6, 0)    // 6 AM the next day
+
+                val isNightTime = when {
+                    // If current time is after or equal to night start time
+                    // OR current time is before night end time
+                    // Then it's considered night time
+                    currentTime >= nightStartTime || currentTime < nightEndTime -> true
+                    else -> false
+                }
+
+
+            return isNightTime
         }
     }
 }

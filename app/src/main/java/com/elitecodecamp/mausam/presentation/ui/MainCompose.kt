@@ -1,5 +1,6 @@
 package com.elitecodecamp.mausam.presentation.ui
 
+import android.content.Context
 import androidx.compose.material3.DrawerState
 import androidx.compose.material3.DrawerValue
 import androidx.compose.material3.ExperimentalMaterial3Api
@@ -22,7 +23,6 @@ import com.elitecodecamp.navigationdrawer.drawer.mainGraph
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
 fun MainCompose(
-
     predictionViewModel: PredictionViewModel,
     weatherViewModel: WeatherViewModel,
     navController: NavHostController = rememberNavController(),
@@ -51,6 +51,7 @@ fun MainCompose(
                                     popUpTo(NavRoutes.MainRoute.name)
                                 }
                             }
+
                         }
                     }
                 }

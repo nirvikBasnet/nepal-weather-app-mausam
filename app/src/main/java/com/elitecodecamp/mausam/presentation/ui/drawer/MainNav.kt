@@ -1,5 +1,6 @@
 package com.elitecodecamp.navigationdrawer.drawer
 
+import android.content.Context
 import androidx.compose.material3.DrawerState
 import androidx.compose.material3.ExperimentalMaterial3Api
 import androidx.navigation.NavGraphBuilder
@@ -31,5 +32,5 @@ fun NavGraphBuilder.mainGraph(
 
 enum class MainNavOption {
     TodayScreen,
-    PredictionScreen,
+    PredictionScreen
 }

@@ -54,4 +54,5 @@ object AppModule {
     fun provideLoggingInterceptor():LoggingInterceptor{
         return LoggingInterceptor()
     }
+
 }
